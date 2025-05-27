@@ -8,43 +8,22 @@
 
 int main()
 {
-    LoatSolver solver1 = LoatSolver::forSafety();
-    solver1.setParameter(DynamicParameterKey::Log, true);
-    solver1.setParameter(DynamicParameterKey::LogPreproc, true);
+    LoatSolver solver = LoatSolver::forSafety();
 
-    LoatIntExprPtr five = LoatIntExpression::mkConst(Rational(5));
-    LoatIntExprPtr x = LoatIntExpression::mkPreVar("x");
-    LoatIntExprPtr ten = LoatIntExpression::mkConst(Rational(10));
+    solver.setStartLocation(LoatLocation("q0"));
+    solver.addSinkLocation(LoatLocation("sink"));
+    solver.add(LoatTransition(LoatLocation("q0"), LoatLocation("sink"), LoatIntExpression::mkConst(0) == LoatIntExpression::mkConst(1)));
+    LoatResult result = solver.check();
 
-    LoatIntExprPtr fivexplusten = (five * x) + ten;
+    std::cout << " ====================================" << std::endl
+              << std::endl;
 
-    std::cout << fivexplusten << std::endl;
+    LoatSolver solver2 = LoatSolver::forUnsafety();
 
-    LoatTransition transition1(
-        LoatLocation("start"),
-        LoatLocation("end"),
-        fivexplusten == LoatIntExpression::mkConst(Rational(15)));
-
-    std::cout << transition1 << std::endl;
-
-    solver1.add(transition1);
-    solver1.setStartLocation(LoatLocation("start"));
-    solver1.addSinkLocation(LoatLocation("end"));
-
-    LoatResult result = solver1.check();
-
-    if (result == LoatResult::SAT)
-    {
-        std::cout << "SAT." << std::endl;
-    }
-    else if (result == LoatResult::UNSAT)
-    {
-        std::cout << "UNSAT" << std::endl;
-    }
-    else
-    {
-        std::cout << "UNKNOWN" << std::endl;
-    }
+    solver2.setStartLocation(LoatLocation("q0"));
+    solver2.addSinkLocation(LoatLocation("sink"));
+    solver2.add(LoatTransition(LoatLocation("q0"), LoatLocation("sink"), LoatIntExpression::mkConst(0) != LoatIntExpression::mkConst(1)));
+    LoatResult result2 = solver2.check();
 
     return 0;
 }
