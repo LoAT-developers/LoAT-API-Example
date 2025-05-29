@@ -16,10 +16,14 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(LoATAPI)
 
+find_library(ANTLR4 antlr4-runtime)
+
 add_executable(LoAT_API_Example src/main.cpp)
+add_subdirectory(src)
 
 list(APPEND CMAKE_PREFIX_PATH "${loatapi_SOURCE_DIR}")
 
 find_package(LoATAPI REQUIRED)
 
 target_link_libraries(LoAT_API_Example PRIVATE LoATAPI)
+target_link_libraries(LoAT_API_Example PRIVATE ${ANTLR4})
