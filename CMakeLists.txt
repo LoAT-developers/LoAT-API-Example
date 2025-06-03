@@ -8,20 +8,21 @@ add_compile_options(-Wall -Wextra -pedantic -Wno-unused-parameter)
 
 project(LoAT_API_Example)
 
-include(FetchContent)
-FetchContent_Declare(
-  LoATAPI
-  URL https://github.com/LoAT-developers/LoAT/releases/download/api-beta-v1.0.0/loat-api-beta-v1.0.0.tar.gz
-  DOWNLOAD_EXTRACT_TIMESTAMP TRUE
-)
-FetchContent_MakeAvailable(LoATAPI)
+# include(FetchContent)
+# FetchContent_Declare(
+#   LoATAPI
+#   URL https://github.com/LoAT-developers/LoAT/releases/download/api-beta-v1.1.0/loat-api-beta-v1.1.0.tar.gz
+#   DOWNLOAD_EXTRACT_TIMESTAMP TRUE
+# )
+# FetchContent_MakeAvailable(LoATAPI)
 
 find_library(ANTLR4 antlr4-runtime)
 
 add_executable(LoAT_API_Example src/main.cpp)
 add_subdirectory(src)
 
-list(APPEND CMAKE_PREFIX_PATH "${loatapi_SOURCE_DIR}")
+# list(APPEND CMAKE_PREFIX_PATH "${loatapi_SOURCE_DIR}")
+list(APPEND CMAKE_PREFIX_PATH "./build/install")
 
 find_package(LoATAPI REQUIRED)
 
