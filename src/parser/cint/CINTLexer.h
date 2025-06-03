@@ -12,13 +12,13 @@
 class  CINTLexer : public antlr4::Lexer {
 public:
   enum {
-    INT = 1, IF = 2, WHILE = 3, ELSE = 4, TERMINATOR = 5, OPENP = 6, CLOSEP = 7, 
-    OPENC = 8, CLOSEC = 9, MULT = 10, MINUS = 11, PLUS = 12, LT = 13, LEQ = 14, 
-    EQ = 15, NEQ = 16, GEQ = 17, GT = 18, ASSIGN = 19, NONDETNAME = 20, 
-    OR = 21, AND = 22, NOT = 23, TRUE = 24, FALSE = 25, TYPEDEF = 26, ENUM = 27, 
-    COMMA = 28, BOOL = 29, EXTERN = 30, VOID = 31, MAIN = 32, RETURN = 33, 
-    ZERO = 34, POS = 35, V = 36, W = 37, BLOCKCOMMENT = 38, LINECOMMENT = 39, 
-    ASSERT = 40
+    INT = 1, IF = 2, WHILE = 3, ELSE = 4, ASSERT = 5, TERMINATOR = 6, OPENP = 7, 
+    CLOSEP = 8, OPENC = 9, CLOSEC = 10, MULT = 11, MINUS = 12, PLUS = 13, 
+    LT = 14, LEQ = 15, EQ = 16, NEQ = 17, GEQ = 18, GT = 19, ASSIGN = 20, 
+    NONDETNAME = 21, OR = 22, AND = 23, NOT = 24, TRUE = 25, FALSE = 26, 
+    TYPEDEF = 27, ENUM = 28, COMMA = 29, BOOL = 30, EXTERN = 31, VOID = 32, 
+    MAIN = 33, RETURN = 34, ZERO = 35, POS = 36, V = 37, W = 38, BLOCKCOMMENT = 39, 
+    LINECOMMENT = 40
   };
 
   explicit CINTLexer(antlr4::CharStream *input);
