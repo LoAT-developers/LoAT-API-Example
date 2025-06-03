@@ -269,7 +269,7 @@ std::any TranslatorVisitor::visitAssignment(CINTParser::AssignmentContext *ctx)
     LoatLocation toLoc = makeNewLocation();
 
     // Build the guard: var_post = rhs
-    LoatBoolExprPtr guard = mkEq(LoatIntExpression::mkPostVar(varName), rhs);
+    LoatBoolExprPtr guard = mkEq(LoatIntExpression::mkPostVar(varName + "'"), rhs);
 
     // Create and store the transition
     transitions.emplace_back(fromLoc, toLoc, guard);
