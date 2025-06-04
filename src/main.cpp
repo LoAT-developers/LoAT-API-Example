@@ -116,8 +116,6 @@ int main(int argc, const char *argv[])
     if (safetyMode)
     {
         LoatSolver safetySolver = LoatSolver::forSafety();
-        safetySolver.setParameter(DynamicParameterKey::Log, true);
-        safetySolver.setParameter(DynamicParameterKey::PrintDependencyGraph, true);
         safetySolver.setStartLocation(startLoc);
         safetySolver.addSinkLocation(LoatLocation("sink"));
         for (auto &t : rawTransitions)
