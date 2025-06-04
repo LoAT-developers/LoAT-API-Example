@@ -11,7 +11,7 @@ project(LoAT_API_Example)
 include(FetchContent)
 FetchContent_Declare(
   LoATAPI
-  URL https://github.com/LoAT-developers/LoAT/releases/download/api-beta-v1.1.0/loat-api-beta-v1.1.0.tar.gz
+  URL https://github.com/LoAT-developers/LoAT/releases/download/api-v1.0.0/loat-api-v1.0.0.tar.gz
   DOWNLOAD_EXTRACT_TIMESTAMP TRUE
 )
 FetchContent_MakeAvailable(LoATAPI)
