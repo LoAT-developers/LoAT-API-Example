@@ -1,10 +1,10 @@
 add_subdirectory(parser)
 
-target_sources(LoAT_API_Example PRIVATE 
+target_sources(UnSafetyChecker PRIVATE 
     main.cpp
     TranslatorVisitor.cpp
 )
 
-target_include_directories(LoAT_API_Example
+target_include_directories(UnSafetyChecker
   PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}
 )

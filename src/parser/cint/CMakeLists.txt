@@ -1,4 +1,4 @@
-target_sources(LoAT_API_Example PRIVATE
+target_sources(UnSafetyChecker PRIVATE
   CINTLexer.cpp
   CINTParser.cpp
   CINTBaseListener.cpp
@@ -7,6 +7,6 @@ target_sources(LoAT_API_Example PRIVATE
   CINTVisitor.cpp
 )
 
-target_include_directories(LoAT_API_Example
+target_include_directories(UnSafetyChecker
   PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}
 )

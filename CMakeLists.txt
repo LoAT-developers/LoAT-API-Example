@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD 20)
 
 add_compile_options(-Wall -Wextra -pedantic -Wno-unused-parameter)
 
-project(LoAT_API_Example)
+project(UnSafetyChecker)
 
 include(FetchContent)
 FetchContent_Declare(
@@ -18,12 +18,12 @@ FetchContent_MakeAvailable(LoATAPI)
 
 find_library(ANTLR4 antlr4-runtime)
 
-add_executable(LoAT_API_Example src/main.cpp)
+add_executable(UnSafetyChecker src/main.cpp)
 add_subdirectory(src)
 
 list(APPEND CMAKE_PREFIX_PATH "${loatapi_SOURCE_DIR}")
 
 find_package(LoATAPI REQUIRED)
 
-target_link_libraries(LoAT_API_Example PRIVATE LoATAPI)
-target_link_libraries(LoAT_API_Example PRIVATE ${ANTLR4})
+target_link_libraries(UnSafetyChecker PRIVATE LoATAPI)
+target_link_libraries(UnSafetyChecker PRIVATE ${ANTLR4})

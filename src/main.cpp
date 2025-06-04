@@ -21,10 +21,43 @@
 
 using namespace antlr4;
 
+void print_help()
+{
+    std::cout << "CINT Safety / Unsafety Checker Help" << std::endl;
+    std::cout << "Usage: UnSafetyChecker [input_file] [--safety | --unsafety]" << std::endl;
+    std::cout << "  input_file: Path to the CINT file to check" << std::endl;
+    std::cout << "  --safety: Run the safety checker (default mode)" << std::endl;
+    std::cout << "  --unsafety: Run the unsafety checker" << std::endl;
+    std::cout << "  --help: Show this help message" << std::endl;
+    std::cout << "  --version: Show the version information" << std::endl;
+}
+
+void print_version()
+{
+    std::cout << "CINT (+ Assertions) Saftey / Unsafety Checker Version 1.0" << std::endl;
+    std::cout << "Built with ANTLR4 and LoAT API\n";
+}
+
 int main(int argc, const char *argv[])
 {
+    // 0) Check for help or version flags
+    for (int i = 1; i < argc; ++i)
+    {
+        std::string arg = argv[i];
+        if (arg == "--help")
+        {
+            print_help();
+            return 0;
+        }
+        else if (arg == "--version")
+        {
+            print_version();
+            return 0;
+        }
+    }
+
     // 1) Determine input file and mode
-    std::string inputFile = (argc >= 2 ? argv[1] : "../examples/safe.cint");
+    std::string inputFile = (argc >= 2 ? argv[1] : "");
     std::ifstream stream(inputFile);
     if (!stream.good())
     {
@@ -36,11 +69,11 @@ int main(int argc, const char *argv[])
     if (argc >= 3)
     {
         std::string mode = argv[2];
-        if (mode == "-safety")
+        if (mode == "--safety")
         {
             safetyMode = true;
         }
-        else if (mode == "-unsafety")
+        else if (mode == "--unsafety")
         {
             safetyMode = false;
         }
